@@ -1,0 +1,26 @@
+<div>
+  <h2>Protected Page</h2>
+  <p>This page is protected and requires authentication.</p>
+</div>
+
+<div *ngIf="user">
+  <p>Bonjour {{ user.displayName }}!</p>
+  <img [src]="user.photoURL ? user.photoURL : '../assets/default-cigar.webp'" alt="Profile Picture" />
+</div>
+
+<div *ngIf="isAdmin">
+  <button (click)="toggleEventForm()">Créer un événement</button>
+  <app-event-form *ngIf="showEventForm"></app-event-form>
+</div>
+
+<button (click)="logout()">Déconnexion</button>
+
+<h1>Tables & Cigares Club</h1>
+<h2>Cigars List</h2>
+<ul>
+  <li *ngFor="let cigar of cigars">
+    Name: {{ cigar.name }} | Type: {{ cigar.type }} | Module: {{ cigar.module }}
+  </li>
+</ul>
+
+<h2>Prochains événements</h2>

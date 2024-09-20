@@ -1,0 +1,17 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 25px;
+  }
+  h1 {
+text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  

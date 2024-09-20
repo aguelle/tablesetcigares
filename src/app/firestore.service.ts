@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, doc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,5 +11,12 @@ export class FirestoreService {
   getCigars(): Observable<any[]> {
     const cigarsCollection = collection(this.firestore, 'cigars');
     return collectionData(cigarsCollection);
+  }
+
+  getUserRole(uid: string): Promise<any> {
+    const userDocRef = doc(this.firestore, `users/${uid}`);
+    return getDoc(userDocRef).then(docSnapshot => {
+      return docSnapshot.exists() ? docSnapshot.data() : null;
+    });
   }
 }
